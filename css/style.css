@@ -1,0 +1,72 @@
+:root {
+    --primary-color: #171818;
+    --secondary-color: #dbe2e9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn-theme {
+    background-color: var(--primary-color);
+}
+
+.text-theme {
+    color: var(--primary-color);
+}
+
+.bg-theme {
+    background-color: var(--primary-color);
+}
+
+body {
+    background-color: var(--secondary-color);
+    min-height: 100vh;
+}
+
+.inputForm {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+a{
+    cursor: pointer;
+}
+
+/* No question */
+
+.no_question_text {
+    font-size: 7rem !important;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+.no_question_button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-image: url("../img/about_us.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+.header-title {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 20px;
+    font-size: 32px;
+    border-radius: 8px;
+}

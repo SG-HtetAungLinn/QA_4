@@ -1,0 +1,29 @@
+{
+    "modules": [
+      {
+        "code": "5230COMP",
+        "name": "Mobile and Web Development",
+        "tutor": "CSMSTAFF1",
+        "icon": "fa-solid fa-code"
+      },
+      {
+        "code": "4300COMP",
+        "name": "Programming in Java",
+        "tutor": "CSMSTAFF1",
+        "icon": "fa-brands fa-java"
+      },
+      {
+        "code": "4500COMP",
+        "name": "Computer Systems Architecture",
+        "tutor": "CSMSTAFF3",
+        "icon": "fa-solid fa-square-binary"
+      },
+      {
+        "code": "6555COMP",
+        "name": "Advanced AI",
+        "tutor": "CSMSTAFF2",
+        "icon": "fa-solid fa-robot"
+      }
+    ]
+  }
+  
