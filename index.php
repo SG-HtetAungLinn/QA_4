@@ -17,6 +17,8 @@ require "./layouts/header.php";
             </h1>
             <p class="mt-3 pt-3">Unlock your potential wiht LIVERPOOL JOHN MOORES UNIVERSITY. Our Platform provides high-quality eduication and empowers learners of all background to success.</p>
         </div>
+        <input type="hidden" value="<?= $_SESSION["user"]['username'] ?>" id="tutor" />
+        <input type="hidden" value="<?= $_SESSION["user"]['role'] ?>" id="role" />
         <div class="col-lg-6 col-sm-12 text-center">
             <img src="./img/home-img.avif" alt="Home page image" style="width:300px; height:300px; border-radius:50%;" class="mt-5 img-fluid">
         </div>

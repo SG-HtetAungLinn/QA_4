@@ -14,7 +14,7 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (response) {
-                 $('#sort-search').show()
+                $('#sort-search').show()
                 if (response.success) {
                     $("#question_list").html("");
                     let questionHtml;
@@ -36,14 +36,8 @@ $(document).ready(function () {
                     }
 
                     const sortedQuestions = filteredQuestions.sort((a, b) => {
-                        const aHasAnswers = a.answers.length > 0;
-                        const bHasAnswers = b.answers.length > 0;
-                        if (aHasAnswers !== bHasAnswers) {
-                            return aHasAnswers ? 1 : -1;
-                        }
                         return b.votes.length - a.votes.length;
                     });
-                    
                     if (sortedQuestions.length > 0) {
                         sortedQuestions.forEach((item) => {
                             const hasVoted = item.votes.includes($("#current_user").val());
@@ -59,8 +53,7 @@ $(document).ready(function () {
                             const showStatus = item.answers.length > 0;
                             // check if current user is the question owner
                             const isQuestionOwner = item.student_id === currentUser;
-                            
-                                questionHtml =`
+                            questionHtml = `
                                         <div class="row justify-content-center my-4">
                                             <div class="col-lg-12 col-sm-10 col-md-8">
                                                 <div class="card" style="box-shadow: 2px 2px 5px black;">
@@ -105,7 +98,7 @@ $(document).ready(function () {
                                 `;
                             $("#question_list").append(questionHtml);
                         });
-                    } else if(response.searchData) {
+                    } else if (response.searchData) {
                         questionHtml = `<div class="d-block align-items-center">
                                             <p class="text-center mt-5 no_question_text">Oops!</p>
                                             <p class="text-center fs-2">Sorry There is no question for this module.</p>
@@ -115,7 +108,7 @@ $(document).ready(function () {
                                             </div>
                                         </div>`;
                         $("#question_list").append(questionHtml);
-                    } else{
+                    } else {
                         questionHtml = `<div class="d-block align-items-center">
                                             <p class="text-center mt-5 no_question_text">Oops!</p>
                                             <p class="text-center fs-2">Sorry There is no question for this module.</p>
@@ -132,18 +125,18 @@ $(document).ready(function () {
         });
     }
 
-     function timeAgo(dateStr) {
-    const now = new Date();
-    const then = new Date(dateStr);
-    const diff = Math.floor((now - then) / 1000); // seconds
+    function timeAgo(dateStr) {
+        const now = new Date();
+        const then = new Date(dateStr);
+        const diff = Math.floor((now - then) / 1000); // seconds
 
-    if (diff < 60) return `${diff} seconds ago`;
-    if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
-    if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
-    if (diff < 604800) return `${Math.floor(diff / 86400)} days ago`;
+        if (diff < 60) return `${diff} seconds ago`;
+        if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+        if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+        if (diff < 604800) return `${Math.floor(diff / 86400)} days ago`;
 
-    return then.toLocaleDateString(); // fallback for older dates
-  }
+        return then.toLocaleDateString(); // fallback for older dates
+    }
     // Handle filter change
     answerFilter.on("change", function () {
         loadQuestions(
