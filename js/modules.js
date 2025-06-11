@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'app/get_modules.php',
+        url: 'get_modules.php',
         method: "POST",
         dataType: "json",
         success: function (response) {

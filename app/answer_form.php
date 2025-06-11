@@ -1,6 +1,6 @@
 <?php
-require "./app/check_auth.php";
-require "./app/common.php";
+require "./check_auth.php";
+require "./common.php";
 
 $question_id = $_GET['question_id'] ?? '';
 $module = $_GET['module'] ?? '';
@@ -18,7 +18,6 @@ if (!$question) {
 
 $module_data = getModuleByCode($module);
 $title = "Answer Question";
-$base_url = "./";
 
 require "./layouts/header.php";
 ?>
@@ -58,5 +57,5 @@ require "./layouts/header.php";
     </div>
 </div>
 
-<script src="./js/answer_form.js"></script>
+<script src="../js/answer_form.js"></script>
 <?php require "./layouts/footer.php" ?>

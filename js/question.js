@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     function loadQuestions(module, search = "", filter = "all") {
         $.ajax({
-            url: "app/get_question.php",
+            url: "get_question.php",
             method: "POST",
             data: {
                 module: module,
@@ -199,7 +199,7 @@ $(document).ready(function () {
         const question_id = form.find('input[name="question_id"]').val();
         const module = form.find('input[name="module"]').val();
         $.ajax({
-            url: "app/vote.php",
+            url: "vote.php",
             method: "POST",
             data: {
                 question_id,
@@ -230,7 +230,7 @@ $(document).ready(function () {
             const questionId = $(this).data("question-id");
             const module = $("#module_code").val();
             $.ajax({
-                url: "app/delete_question.php",
+                url: "delete_question.php",
                 method: "POST",
                 data: {
                     question_id: questionId,

@@ -1,59 +1,50 @@
 <?php
 session_start();
-header('Content-Type: application/json');
-$userFileName = "../data/users.json";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"] ?? "";
-    $password = $_POST["password"] ?? "";
-    if (empty($username) || empty($password)) {
-        echo json_encode([
-            "success" => "error",
-            "message" => "Username and password required"
-        ]);
-        exit;
-    }
-    // check file is exists
-    if (!file_exists($userFileName)) {
-        echo json_encode([
-            "success" => "error",
-            "message" => "User data not found"
-        ]);
-        exit;
-    }
-    // take data from json file
-    $jsonData = file_get_contents($userFileName);
-    $users = json_decode($jsonData, true);
-
-    // Check if users is an array
-    if (!is_array($users)) {
-        echo json_encode([
-            "success" => false,
-            "message" => "User data is corrupted"
-        ]);
-        exit;
-    }
-
-    // Search for matching user
-    foreach ($users['users'] as $user) {
-        if ($user["username"] === $username && $user["password"] === $password) {
-            $_SESSION["user"] = [
-                "username" => $user["username"],
-                "role" => $user["role"] ?? 'student'
-            ];
-
-            echo json_encode([
-                "success" => true,
-                "role" => $user["role"] ?? 'student'
-            ]);
-            exit;
-        }
-    }
-
-    // No matching user found
-    echo json_encode([
-        "success" => false,
-        "message" => "Username or password is wrong!"
-    ]);
-    exit;
+if (isset($_SESSION['user'])) {
+    require_once './check_auth.php';
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+        <div class="card p-5" style="border-radius:20px; box-shadow:3px 3px 3px black;">
+            <div class="row">
+                <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center">
+                    <img src="../img/login.avif" alt="Illustration" class="img-fluid">
+                </div>
+                <div class="col-12 col-md-6">
+                    <h2 class="fw-bold mb-4 text-center mt-5">Sign in</h2>
+                    <div class="alert alert-danger" id="errorMsg" style="display:none;">
+                    </div>
+                    <form method="POST" id="login_form">
+                        <div class="mb-4">
+                            <input type="text" name="username" class="form-control" placeholder="Enter username" id="username" />
+                            <small class="text-danger" id="username-error"></small>
+                        </div>
+                        <div class="mb-4">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" id="password" />
+                            <small class="text-danger" id="password-error"></small>
+                        </div>
+                        <div class="d-grid my-5">
+                            <button type="submit" class="btn btn-primary">Log in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

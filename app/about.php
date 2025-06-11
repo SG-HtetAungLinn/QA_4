@@ -1,5 +1,5 @@
 <?php
-require "./app/check_auth.php";
+require "./check_auth.php";
 $title = "About Us";
 require "./layouts/header.php";
 ?>

@@ -32,13 +32,13 @@ $(document).ready(function () {
             }, 3000);
         } else {
             $.ajax({
-                url: 'app/login.php',
+                url: 'login.php',
                 method: 'POST',
                 data: { username, password },
                 dataType: "json",
                 success: function (response) {
                     if (response.success) {
-                        window.location.href = "index.php";
+                        window.location.href = "../index.php";
                     } else {
                         errorMsg.append(`<strong>${response.message}</strong><br/>`);
                         errorMsg.show();

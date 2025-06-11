@@ -1,7 +1,7 @@
 <?php
 
-require "./app/check_auth.php";
-require "./app/common.php";
+require "./check_auth.php";
+require "./common.php";
 
 $title = "Question List";
 $module_code = $_GET['module'] ?? '';
@@ -18,7 +18,7 @@ require "./layouts/header.php";
         <div class="col-md-4">
             <h1 class="text-center text-theme my-3"><?= $module_data['name'] ?></h1>
             <div class=" d-none d-md-block text-center">
-                <img src="./img/source.gif" alt="student" class="img-fluid mt-5">
+                <img src="../img/source.gif" alt="student" class="img-fluid mt-5">
             </div>
         </div>
         <div class="col-lg-6 col-md-6">
@@ -53,7 +53,7 @@ require "./layouts/header.php";
     </div>
 </div>
 
-<script src="./js/question.js"></script>
+<script src="../js/question.js"></script>
 <?php
 require "./layouts/footer.php"
 ?>

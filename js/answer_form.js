@@ -56,7 +56,7 @@ $(document).ready(function () {
         if (!hasError) {
             // Submit form
             $.ajax({
-                url: "app/save_answer.php",
+                url: "save_answer.php",
                 method: "POST",
                 data: formData,
                 dataType: "json",
